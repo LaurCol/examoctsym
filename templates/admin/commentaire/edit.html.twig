@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container">
         <h1 class="my-5">Modification du commentaire {{commentaire.id}}</h1>
-        <a href="{{ path('admin_comment_index') }}" class="btn btn-secondary my-3">Retour</a>
+        <a href="{{ path('admin_commentaires_index') }}" class="btn btn-secondary my-3">Retour</a>
         <div class="alert alert-info">
             <strong>Produit liée:</strong> {{commentaire.produit.nom}}<br>
             <strong>Auteur:</strong> {{commentaire.user.email}}<br>

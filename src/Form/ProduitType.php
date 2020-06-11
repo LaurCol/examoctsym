@@ -27,6 +27,9 @@ class ProduitType extends ApplicationType
                     ]
                 ]))
             ->add('prix',MoneyType::class, $this->getConfiguration('Prix','Indiquez le prix du produit...'))
+            ->add('photo',FileType::class,[
+                'label' => 'Photo du produit (jpg,png,gif)'
+            ])
         ;
     }
 

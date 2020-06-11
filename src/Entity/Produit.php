@@ -46,6 +46,8 @@ class Produit
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Image(mimeTypes={"image/png","image/jpeg","image/gif"}, mimeTypesMessage="Vous devez upload un fichier jpg, png ou gif")
+     * @Assert\File(maxSize="1024k", maxSizeMessage="taille du fichier trop grande")
      */
     private $photo;
 
