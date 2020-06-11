@@ -1,0 +1,551 @@
+*
+{
+    margin:0;
+    padding:0;
+}
+body
+{
+    background-color: #f5f7fa;
+}
+
+nav
+{
+    height:100vh;
+    width:20vw;
+    position: fixed;
+    z-index: 10;
+    color:white;
+    left:0;
+    background-color:#0070ba;
+    background-image: linear-gradient(190deg,#0070ba,#1546a0);
+    border-right: solid 5px #0070ba;
+    transition: all 1s;
+}
+#nav.hidden
+{
+    left:-20vw;
+}
+
+nav button
+{
+    background-color: transparent;
+    border: none;
+    color:white;
+    height:100%;
+    width:100%;
+}
+nav .title
+{
+    height:10vh;
+    border-bottom: solid 3px #0070ba;
+}
+.title button
+{
+    font-size: 3vw;
+}
+.nav-menu
+{
+    height:79%;
+}
+.nav-item
+{
+    height:10%;
+    font-size: 1.5vw;
+    width:100%;
+    border-bottom: solid 1px #0070ba;
+}
+.nav-item a
+{
+    color:white;
+    text-decoration: none;
+}
+.account
+{
+    height:10vh;
+    border-top: solid 3px #0070ba;
+    position: relative;
+}
+#navbar-button
+{
+    font-size: 1.2vw;
+    overflow: hidden;
+}
+#navbar-button h1
+{
+    font-size: 2.5vw;
+}
+#navbar-menu
+{
+    width:100%;
+    position: absolute;
+    display: none;
+    bottom: 101%;
+    background-color: #0070ba;
+    background-image: linear-gradient(290deg,#0070ba,#1546a0);
+    border: solid 3px #0070ba;
+    border-left:none;
+}
+#navbar-menu.active
+{
+    display: block;
+}
+#navbar-menu li
+{
+    height:75%;
+    width:100%;
+}
+#navbar-menu button
+{
+    padding: 2vmin 0;
+    border-top: solid 3px #0070ba;
+    border-bottom: solid 3px #0070ba;
+}
+#navbar-menu a
+{
+    color:white;
+    text-decoration: none;
+    font-size: 2.5vmin;
+}
+#nav-hider
+{
+    height:100%;
+    width:2vw;
+    position: fixed;
+    left:20.5vw;
+    z-index: 10;
+    border:none;
+    background-color: transparent;
+    transition: all 1s;
+    opacity: 0.25;
+}
+#nav-hider:hover
+{
+    opacity: 1;
+}
+#nav-hider.hidden
+{
+    left:0.5vw;
+}
+#nav-hider i
+{
+    font-size: 5vmin;
+}
+
+#page
+{
+    width:80%;
+    margin-left: 20%;
+    transition: all 1s;
+}
+#page.hidden
+{
+    width:100%;
+    margin-left: 0;
+}
+.header
+{
+    width: 100%; 
+    height:15vh;
+    overflow: hidden;
+    position: relative;
+    background-color: #0070ba;
+    background-image: linear-gradient(100deg,#0070ba,#1546a0);
+}
+.header img
+{
+    padding-left:3px;
+    box-sizing: border-box;
+    width:100%;
+    position: absolute;
+    height:200%;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.header h1
+{
+    position: absolute;
+    color:white;
+    top:20%;
+    left:70%;
+    font-size: 5vmin;
+}
+.containerFlash
+{
+    width:100%;
+    box-sizing: border-box;
+    padding:5vmin;
+}
+.alert
+{
+    background-color: #fff;
+    padding:2.5vmin;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 1vmin;
+    font-size: 2.2vmin;
+    text-align: center;
+}
+.alert-success
+{
+    background-color: #18BC9C;
+}
+.alert-warning
+{
+    background-color: #F39C12;
+}
+.alert-error
+{
+    background-color: #E74C3C;
+}
+.content
+{
+    width:100%;
+    min-height:76.3vmin;
+    box-sizing: border-box;
+    padding:5vmin;
+}
+
+.container
+{
+    width:100%;
+    min-height:66.3vmin;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding:2.5vmin;
+    position: relative;
+    font-size: 2vmin;
+    text-align: center;
+}
+.container>div
+{
+    background-color: #fff;
+    padding:2.5vmin;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 1vmin;
+}
+.container h1
+{
+    margin-bottom: 1vmin;
+    font-size: 2.5vmin;
+}
+.container input
+{
+    border: 1px solid #e0e0e0;
+    padding:0.5vmin;
+    font-size: 1.8vmin;
+}
+.container button
+{
+    background-color:#0070ba;
+    margin-top:2vmin;
+    color: white;
+    background-image: linear-gradient(100deg,#0070ba,#1546a0);
+    padding:1.3vmin;
+    border-radius: 1.5rem;
+    border: .0625rem solid #0070ba;
+    font-size: 2.2vmin;
+}
+.login label
+{
+    display: inline-block;
+    width:35%;
+}
+.login input
+{
+    width:55%;
+}
+.login .form-group
+{
+    margin: 0.5vmin 0;
+}
+.produitCard
+{
+    height:25vh;
+    width:23.5%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 1vmin;
+    padding:0 !important;
+    border-radius: 1.5rem !important;
+    border: .0625rem solid #0070ba !important;
+    overflow: hidden;
+}
+.produitCard .imgCard
+{
+    width:100%;
+    height:80%;
+    box-sizing: border-box;
+    padding: 1vmin 1vmin 0 ;
+    position: relative;
+}
+.imgCard img
+{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:100%;
+}
+.textCard
+{
+    background-color:#0070ba;
+    box-sizing: border-box;
+    height:20%;
+    width: 100%;
+    color:white;
+    background-image: linear-gradient(100deg,#0070ba,#1546a0);
+    padding:1vmin;
+    position: relative;
+}
+.textCard:after {
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
+.textCard .nomProdCard
+{
+    float:left;
+}
+.textCard .prixProdCard
+{
+    float:right;
+}
+.container>h1
+{
+    font-size: 5vmin;
+    color:#0070ba;
+}
+.container>h2
+{
+    margin-top:2vmin;
+    margin-bottom: 1vmin;
+    color:#0070ba;
+    font-size: 4vmin;
+}
+.infoProduit:after{
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+.infoProduit .coverImg
+{
+    float: left;
+    width:40%;
+}
+.infoProduit .coverImg img
+{
+    width:100%;
+}
+.infoProduit .info
+{
+    float:left;
+    width:50%;
+}
+.infoProduit .info button a
+{
+    text-decoration: none;
+    color:white;
+}
+.commentaires
+{
+    width:100%;
+    box-sizing: border-box;
+    padding:1vmin;
+}
+.commentaireCard
+{
+    border-radius:20px 20px 10px 10px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 2vmin;
+    overflow: hidden;
+    display: block;
+}
+.commentaireCard .infoTexte
+{
+    background-color: #0070ba;
+    background-image: linear-gradient(290deg,#0070ba,#1546a0);
+    width:100%;
+    color:white;
+    box-sizing: border-box;
+    padding:1vmin 2vmin;
+    font-size: 2vmin;
+}
+.infoTexte:after{
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+.infoTexte .user
+{
+    float: left;
+}
+.infoTexte .date
+{
+    float: right;
+}
+.messageTexte
+{
+    width:100%;
+    box-sizing: border-box;
+    padding: 2vmin;
+}
+.center
+{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    top:50%;
+    left:50%;
+    padding:2.5vmin !important;
+    text-align: center;
+}
+.commentaireForm label
+{
+    display: block;
+    width:100%;
+    margin-top:2vmin;
+    margin-bottom: 1vmin;
+    color:#0070ba;
+    font-size: 4vmin;
+}
+.commentaireForm input
+{
+    width:60%;
+    margin: 0 auto;
+}
+.commentaireForm textarea
+{
+    width:60%;
+    height:10vh;
+    resize: none;
+    margin: 0 auto;
+    font-size: 1.8vmin;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+    padding: 0.5vmin;
+}
+.commandeCard
+{
+    width:60%;
+    font-size: 2vmin;
+    display: block;
+    padding:0;
+    margin: 0 auto 1vmin;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    text-decoration: none;
+}
+.commandeCard .cardTitle
+{
+    background-color:#0070ba;
+    background-image: linear-gradient(290deg,#0070ba,#1546a0);
+    color: white;
+    font-size: 2.2min;
+}
+.commandeCard .cardBody
+{
+    width:100%;
+    box-sizing: border-box;
+    padding:2vmin;
+    color: black;
+}
+.commandeCard .cardBody:after {
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
+.commandeCard .cardBody .left
+{
+    float:left;
+    width:60%;
+}
+.commandeCard .cardBody .right
+{
+    width:35%;
+    float: right;
+}
+.commande h1
+{
+    font-size: 5vmin;
+    color:#0070ba;
+}
+.commande h2
+{
+    margin:2vmin;
+}
+.commandeTable
+{
+    width:100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.commandeTable th
+{
+    padding: 2vmin 0;
+}
+.commandeTable th, td 
+{
+    border-bottom: 1px solid #e0e0e0;
+}
+.commandeTable thead,.commandeTable .total
+{
+    
+    background-color:#0070ba;
+    background-image: linear-gradient(290deg,#0070ba,#1546a0);
+    color:white;
+}
+.total td
+{
+    border-bottom: none;
+}
+tr:hover {background-color: #f5f5f5;}
+thead tr:hover
+{
+    background-color: transparent;
+}
+.commandePhoto
+{
+    width: 40%;
+}
+.commandePhoto img
+{
+    width:100%;
+}
+.boutonRetirer
+{
+    padding: 1vmin;
+    border-radius: 5px;
+    color: white;
+    border: solid 1px #d34536;
+    background-color: #E74C3C;
+}
+#registration>div
+{
+    padding:1vmin;
+}
+.boutons button a
+{
+    color:white;
+    text-decoration: none;
+}
+footer
+{
+    background-color:#0070ba;
+    background-image: linear-gradient(290deg,#0070ba,#1546a0);
+    padding: 2vmin ;
+    font-size: 2vmin;
+    color: white;
+    text-align: center;
+}

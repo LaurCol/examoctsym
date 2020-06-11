@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes commandes{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="container">
+        <h1>Vos commandes</h1>
+        {% for commande in app.user.commandes %}
+            <a href="{{path("commande_view",{"commande":commande.id})}}" class="commandeCard">
+                <div class="cardTitle">
+                    <h2>Numéro de commande : {{commande.id}}</h2>
+                </div>
+                <div class="cardBody">
+                    <div class="left">
+                    <h3>Contenu de la commande</h3>
+                        {% for produit in commande.panierTab(manager) %}
+                            <p>{{produit.quantite}} {{produit.produit.nom}}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="right">
+                        <h4>Montant : {{commande.total}} &euro;</h4>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+        {% if app.user.commandes|length == 0 %}
+            <h2>Vous n'avez passé aucune commande</h2>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

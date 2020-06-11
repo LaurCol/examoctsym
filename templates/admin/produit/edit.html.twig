@@ -1,0 +1,69 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Edition du produit {{produit.nom}}{% endblock %}
+
+{% form_theme myForm _self %}
+
+{% block body %}
+    <div class="container">
+        <h1>Modification du produit {{produit.nom}}</h1>
+        <a href="{{path('admin_produits_index')}}" class="btn btn-secondary my-3">Retour</a>
+        <a href="{{path('admin_produits_edit_photo',{"produit":produit.id})}}" class="btn btn-secondary my-3">Modifier la photo</a>
+        {{form_start(myForm)}}
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        <h4 class="card-title">Corriger le produit?</h4>
+                    </div>
+                    <div class="card-body">
+                        {{form_widget(myForm)}}
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-check"></i>
+                            Enregistrer les modifications
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-5">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        <h4 class="card-title">Les commentaires</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>User</th>
+                                    <th class="text-center">Note</th>
+                                    <th>Commentaire</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for commentaire in produit.commentaires %}
+                                    <tr>
+                                        <td>{{commentaire.id}}</td>
+                                        <td>{{commentaire.user.email}}</td>
+                                        <td class="text-center">{{commentaire.note}}</td>
+                                        <td class="text-justify">{{commentaire.message | nl2br }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ path('admin_commentaires_edit', {'id':commentaire.id}) }}" class="btn btn-success">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </td>
+                                    </tr>        
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+
+        {{form_end(myForm)}}
+    </div>
+
+{% endblock %}

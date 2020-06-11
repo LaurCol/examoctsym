@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{asset("css/style.css")}}">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% include "partials/nav.html.twig" %}
+        <div id="page">
+            {% include "partials/header.html.twig" %}
+            {% block body %}{% endblock %}
+            {% include "partials/footer.html.twig" %}
+        </div>
+        <script>
+            var navHider=document.getElementById("nav-hider");
+            var page=document.getElementById("page");
+            var nav=document.getElementById("nav");
+            navHider.onclick = function () {
+                nav.classList.toggle("hidden")
+                page.classList.toggle("hidden")
+                this.classList.toggle("hidden")
+                if(nav.classList.contains("hidden"))
+                {
+                    this.innerHTML='<i class="fas fa-chevron-right"></i>'
+                }
+                else
+                {
+                    this.innerHTML='<i class="fas fa-chevron-left"></i>'
+                }
+            }
+
+            var btn = document.getElementById("navbar-button");
+            var menu=document.getElementById("navbar-menu");
+
+            btn.onclick = function() {
+                menu.classList.toggle("active")
+            }
+
+
+        </script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
