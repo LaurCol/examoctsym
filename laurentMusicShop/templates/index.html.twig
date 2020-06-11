@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <div class="container">
+            <h1 class="categorieTitle">{{title}}</h1>
+            {% for produit in produits %}
+                <a href="{{path("produit",{"produit":produit.id})}}" class="produitCard">
+                    <div class="imgCard">
+                        <img src="{{asset("/uploads/" ~ produit.photo)}}" alt="photo de {{produit.nom}}">
+                    </div>
+                    <div class="textCard">
+                        <span class="nomProdCard">{{produit.nom}}</span>
+                        <span class="prixProdCard">{{produit.prix}} &euro;</span>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

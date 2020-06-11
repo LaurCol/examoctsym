@@ -1,0 +1,13 @@
+<div class="header">
+    <img src="{{asset("banniere.png")}}" alt="bannière du site">
+    <h1>MusicShop</h1>
+</div>
+{% for label, messages in app.flashes %}
+    <div class="containerFlash">
+        <div class="alert alert-{{ label }}">
+            {% for message in messages %}
+                <p>{{message | raw}}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
