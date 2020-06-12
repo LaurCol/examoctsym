@@ -5,8 +5,9 @@ namespace App\Controller;
 use App\Entity\Produit;
 use App\Entity\Commentaire;
 use App\Form\CommentaireType;
-use App\Repository\CommentaireRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CommentaireRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -15,12 +16,30 @@ class ProduitController extends AbstractController
     /**
      * @Route("/produit/{produit}", name="produit")
      */
-    public function index(Produit $produit,CommentaireRepository $commentaireRepository,EntityManagerInterface $manager)
+    public function index(Produit $produit,CommentaireRepository $commentaireRepository,EntityManagerInterface $manager,Request $request)
     {
         $commentaire=new Commentaire();
         $form=$this->createForm(CommentaireType::class,$commentaire);
         $message="";
         $formV=true;
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $commentaire->setUser($this->getUser())
+                ->setProduit($produit);
+            
+            $this->addFlash(
+                'success',
+                'Vous avez bien commenté ce produit'
+            );
+            
+            $manager->persist($commentaire);
+            $manager->flush();
+                
+            return $this->redirectToRoute('produit', ['produit' => $produit->getId()]);      
+        }
+
         if($this->getUser()==null)
         {
             $message="Vous devez être connecté pour commenter un produit";
@@ -34,20 +53,6 @@ class ProduitController extends AbstractController
                 $formV=false;
                 $message="Vous avez déjà commenté ce produit";
             }
-        }
-
-        if($form->isSubmitted() && $form->isValid()){
-
-            
-            $this->addFlash(
-                'success',
-                'Vous avez bien commenté ce produit'
-            );
-            
-            $manager->persist($commentaire);
-            $manager->flush();
-                
-            return $this->redirectToRoute('produit', ['produit' => $produit->getId()]);      
         }
         
         

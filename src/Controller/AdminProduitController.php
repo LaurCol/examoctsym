@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Produit;
 use App\Form\ProduitType;
+use App\Form\ProduitEditType;
 use App\Entity\ProduitPhotoEdit;
 use App\Form\ProduitPhotoEditType;
 use App\Services\PaginationService;
@@ -82,7 +83,8 @@ class AdminProduitController extends AbstractController
      * @Route("/admin/produits/{id}/edit", name="admin_produits_edit")
      */
     public function edit(Produit $produit, Request $request, EntityManagerInterface $manager){
-        $form = $this->createForm(ProduitType::class,$produit);
+        
+        $form = $this->createForm(ProduitEditType::class,$produit);
 
         $form->handleRequest($request);
 

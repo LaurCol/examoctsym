@@ -7,12 +7,11 @@ use App\Form\ApplicationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class ProduitType extends ApplicationType
+class ProduitEditType extends ApplicationType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -27,9 +26,6 @@ class ProduitType extends ApplicationType
                     ]
                 ]))
             ->add('prix',MoneyType::class, $this->getConfiguration('Prix','Indiquez le prix du produit...'))
-            ->add('photo',FileType::class,[
-                'label' => 'Photo du produit (jpg,png,gif)'
-            ])
         ;
     }
 
@@ -37,10 +33,6 @@ class ProduitType extends ApplicationType
     {
         $resolver->setDefaults([
             'data_class' => Produit::class,
-            'validation_groups' => [
-                'Default',
-                'front'
-            ]
         ]);
     }
 }
