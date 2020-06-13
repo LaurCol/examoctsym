@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Commande;
+use App\Repository\ProduitRepository;
 use App\Services\PaginationService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ class AdminCommandeController extends AbstractController
     /**
      * @Route("/admin/commandes/{page<\d+>?1}", name="admin_commandes_index")
      */
-    public function index($page, PaginationService $pagination)
+    public function index($page, PaginationService $pagination, EntityManagerInterface $manager)
     {
         $pagination->setEntityClass(Commande::class)
                 ->setPage($page)
@@ -23,7 +24,8 @@ class AdminCommandeController extends AbstractController
                 ;
 
         return $this->render('admin/commande/index.html.twig', [
-           'pagination' => $pagination
+           'pagination' => $pagination,
+           "manager"=>$manager
         ]);
     }
 

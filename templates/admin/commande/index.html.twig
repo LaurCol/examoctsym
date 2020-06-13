@@ -20,7 +20,12 @@
                     <tr>
                         <td>{{commande.id}}</td>
                         <td>{{commande.user.email}}</td>
-                        <td>{{commande.user.email}}</td>
+                        <td>
+                            {% for item in commande.getPanierTab(manager) %}
+                                {{item.quantite}} {{item.produit.nom}}
+                                {% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
                         <td class="text-center">
                             {{commande.total}}
                         </td>

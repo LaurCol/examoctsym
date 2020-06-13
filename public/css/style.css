@@ -59,6 +59,13 @@ nav .title
     color:white;
     text-decoration: none;
 }
+
+.nav-item a:hover
+{
+    color:rgb(176, 180, 185);
+    text-decoration: none;
+}
+
 .account
 {
     height:10vh;
