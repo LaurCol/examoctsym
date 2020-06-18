@@ -2,13 +2,18 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use App\Entity\Produit;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity(repositoryClass=CommandeRepository::class)
+ * @ApiResource
  */
 class Commande
 {

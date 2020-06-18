@@ -2,16 +2,30 @@
 
 namespace App\Entity;
 
+use App\Entity\Commande;
+use App\Entity\Commentaire;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ApiResource(     
+ *      normalizationContext={
+ *          "groups"={"User_read"}
+ *      }
+ *  )
+ * @ApiFilter(SearchFilter::class)
+ * @ApiFilter(OrderFilter::class)
  * @UniqueEntity(
  *  fields={"email"},
  *  message="Un autre utilisateur possède déjà cette adresse email, merci de la modifier"
@@ -23,17 +37,20 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"User_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email(message="Veuillez renseigner une adresse email valide")
+     * @Groups({"User_read", "Commentaire_read"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"User_read"})
      */
     private $roles = [];
 
@@ -41,21 +58,25 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Assert\Length(min=8, minMessage="Votre mot de passe doit faire au moins 8 caractères")
+     * @Groups({"User_read"})
      */
     private $password;
 
     /**
      * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas correctement confirmé votre mot de passe")
+     * @Groups({"User_read"})
      */
     public $passwordConfirm;
 
     /**
      * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="user", orphanRemoval=false)
+     * @Groups({"User_read"})
      */
     private $commandes;
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="user", orphanRemoval=true)
+     * @Groups({"User_read"})
      */
     private $commentaires;
 
