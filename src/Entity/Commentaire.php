@@ -29,7 +29,7 @@ class Commentaire
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"Commentaire_read"})
+     * @Groups({"Commentaire_read", "Produit_read"})
      */
     private $id;
 
@@ -37,7 +37,7 @@ class Commentaire
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commentaires")
      * @ORM\JoinColumn(nullable=false)
      * @Assert\NotBlank
-     * @Groups({"Commentaire_read"})
+     * @Groups({"Commentaire_read", "Produit_read"})
      */
     private $user;
 
@@ -52,7 +52,7 @@ class Commentaire
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Vous devez entrer votre commentaire")
-     * @Groups({"Commentaire_read", "User_read"})
+     * @Groups({"Commentaire_read", "User_read", "Produit_read"})
      */
     private $message;
 
@@ -60,14 +60,14 @@ class Commentaire
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Vous devez entrer votre note")
      * @Assert\Range(min = 0,max = 5,notInRangeMessage = "Votre note doit être entre 0 et 5")
-     * @Groups({"Commentaire_read"})
+     * @Groups({"Commentaire_read", "Produit_read"})
      */
     private $note;
 
     /**
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank
-     * @Groups({"Commentaire_read"})
+     * @Groups({"Commentaire_read", "Produit_read"})
      */
     private $date;
 
