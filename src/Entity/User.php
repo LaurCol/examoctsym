@@ -37,14 +37,14 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"User_read", "Commande_read", "Commentaire_read"})
+     * @Groups({"User_read", "Commande_read", "Commentaire_read", "Produit_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email(message="Veuillez renseigner une adresse email valide")
-     * @Groups({"User_read", "Commentaire_read"})
+     * @Groups({"User_read", "Commentaire_read", "Produit_read"})
      */
     private $email;
 
