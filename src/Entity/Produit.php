@@ -34,14 +34,14 @@ class Produit
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"Produit_read"})
+     * @Groups({"Produit_read", "Commande_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Vous devez renseigner le nom du produit")
-     * @Groups({"Produit_read", "Commentaire_read"})
+     * @Groups({"Produit_read", "Commentaire_read", "Commande_read"})
      */
     private $nom;
 
@@ -49,7 +49,7 @@ class Produit
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Vous devez renseigner la catégorie du produit")
      * @Assert\Choice({"Instruments", "Accessoires", "CD","Vinyles"})
-     * @Groups({"Produit_read"})
+     * @Groups({"Produit_read", "Commande_read"})
      */
     private $categorie;
 
@@ -57,7 +57,7 @@ class Produit
      * @ORM\Column(type="float")
      * @Assert\NotBlank(message="Vous devez renseigner le prix du produit")
      * @Assert\PositiveOrZero(message="Le prix doit être positif ou zero")
-     * @Groups({"Produit_read"})
+     * @Groups({"Produit_read", "Commande_read"})
      */
     private $prix;
 
@@ -65,19 +65,19 @@ class Produit
      * @ORM\Column(type="string", length=255)
      * @Assert\Image(mimeTypes={"image/png","image/jpeg","image/gif"}, mimeTypesMessage="Vous devez upload un fichier jpg, png ou gif", groups={"front"})
      * @Assert\File(maxSize="1024k", maxSizeMessage="taille du fichier trop grande", groups={"front"})
-     * @Groups({"Produit_read"})
+     * @Groups({"Produit_read", "Commande_read"})
      */
     private $photo;
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="produit", orphanRemoval=true)
-     * @Groups({"Produit_read"})
+     * @Groups({"Produit_read", "Commande_read"})
      */
     private $commentaires;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Produit_read"})
+     * @Groups({"Produit_read", "Commande_read"})
      */
     private $slug;
 

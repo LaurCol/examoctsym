@@ -13,7 +13,11 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity(repositoryClass=CommandeRepository::class)
- * @ApiResource
+ * @ApiResource(     
+ *      normalizationContext={
+ *          "groups"={"Commande_read"}
+ *      }
+ *  )
  */
 class Commande
 {
@@ -21,22 +25,26 @@ class Commande
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"Commande_read"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"Commande_read"})
      */
     private $user;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"Commande_read"})
      */
     private $panier = [];
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"Commande_read"})
      */
     private $total;
 
