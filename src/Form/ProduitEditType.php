@@ -7,6 +7,7 @@ use App\Form\ApplicationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -26,6 +27,7 @@ class ProduitEditType extends ApplicationType
                     ]
                 ]))
             ->add('prix',MoneyType::class, $this->getConfiguration('Prix','Indiquez le prix du produit...'))
+            ->add('video',UrlType::class,$this->getConfiguration("Vidéo","Entrez l'URL de la vidéo..."))
         ;
     }
 

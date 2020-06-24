@@ -81,11 +81,6 @@ class Produit
      */
     private $slug;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $video;
-
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -208,17 +203,5 @@ class Produit
         }
         $avgNote=$note/count($this->getCommentaires());
         return round($avgNote,1);
-    }
-
-    public function getVideo(): ?string
-    {
-        return $this->video;
-    }
-
-    public function setVideo(?string $video): self
-    {
-        $this->video = $video;
-
-        return $this;
     }
 }

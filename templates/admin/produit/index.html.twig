@@ -13,6 +13,7 @@
                     <th>Nom</th>
                     <th>Catégorie</th>
                     <th>Prix</th>
+                    <th>Vidéo</th>
                     <th></th>
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
                         <td>{{produit.nom}}</td>
                         <td>{{produit.categorie}}</td>
                         <td>{{produit.prix}}&euro;</td>
+                        <td>{{produit.video}}</td>
                         <td class="text-center">
                             <a href="{{ path('admin_produits_edit', {'id':produit.id}) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                             <a href="{{ path('admin_produits_delete', {'id':produit.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>

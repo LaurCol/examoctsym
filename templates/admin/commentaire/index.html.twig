@@ -23,8 +23,8 @@
                         <td>{{commentaire.id}}</td>
                         <td>{{commentaire.id}}</td>
                         <td>{{commentaire.id}}</td>
-                        <td class="text-center">{{commentaire.id}}</td>
-                        <td class="text-center">{{commentaire.id}}</td>
+                        <td class="text-center">{{commentaire.message}}</td>
+                        <td class="text-center">{{commentaire.note}}</td>
                         <td>{{commentaire.date | date("H:i:s d-m-Y")}}</td>
                         <td>
                             <a href="{{ path('admin_commentaires_edit', {'id':commentaire.id}) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
