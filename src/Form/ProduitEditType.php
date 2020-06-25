@@ -27,7 +27,7 @@ class ProduitEditType extends ApplicationType
                     ]
                 ]))
             ->add('prix',MoneyType::class, $this->getConfiguration('Prix','Indiquez le prix du produit...'))
-            ->add('video',UrlType::class,$this->getConfiguration("Vidéo","Entrez l'URL de la vidéo..."))
+            ->add('video',UrlType::class,$this->getConfiguration("Vidéo","Entrez l'URL de la vidéo...",['required'=>false]))
         ;
     }
 
