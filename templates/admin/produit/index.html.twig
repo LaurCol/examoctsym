@@ -6,6 +6,9 @@
     <div class="container-fluid">
         <h1 class="my-5">Gestion des produits</h1>
         <a href="{{path('admin_produits_nouveau')}}" class="btn btn-success my-3">Nouveau</a>
+         <h2>Recherche</h2>
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -35,4 +38,6 @@
         </table>
         {{ pagination.display() }}
     </div>
+{% endblock %}
+{% block javascripts %}
 {% endblock %}
